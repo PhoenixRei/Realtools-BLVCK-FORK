@@ -237,11 +237,12 @@ When reporting a bug, screenshots and clear steps for reproducing the problem ar
 
 Horse Reality updates may change page structures or other functionality that Realtools relies on, so some features may occasionally require updates.
 
----
+<br>
 
-# Credits
+<img width="1800" height="76" alt="credits-dark" src="https://github.com/user-attachments/assets/6bf89ca8-c23d-4fa7-8e2d-184949364cab" />
+<br><br>
 
-## Original Realtools
+### Original Realtools
 
 Realtools: BLVCK FORK is based on the original **Realtools** extension.
 
@@ -249,7 +250,9 @@ Full credit goes to the original Realtools developer for creating the extension 
 
 BLVCK FORK focuses on restoring broken functionality and expanding the existing tools for current Horse Reality players.
 
-## Horse Reality
+---
+
+### Horse Reality
 
 Horse Reality, its game content, and its original interface and design concepts belong to their respective owners.
 
@@ -257,9 +260,10 @@ The optional redesigned Passport and Owner's Notes interfaces were inspired by H
 
 Realtools: BLVCK FORK is an unofficial community project and is not affiliated with or endorsed by Horse Reality.
 
----
+<br>
 
-# License
+<img width="1800" height="76" alt="license-dark" src="https://github.com/user-attachments/assets/943b68d9-b24d-4c15-983e-a2c70746a932" />
+<br><br>
 
 This project is distributed under the **GNU General Public License v3.0**.
 
