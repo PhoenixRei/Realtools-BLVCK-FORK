@@ -266,13 +266,11 @@ Horse Reality, its game content, and its original interface and design concepts 
 
 The optional redesigned Passport and Owner's Notes interfaces were inspired by Horse Reality's official WIP horse profile UI preview, as described in the **UI Design Credit & Disclaimer** section above.
 
-Realtools: BLVCK FORK is an unofficial community project and is not affiliated with or endorsed by Horse Reality.
-
 <br>
 
 <img width="1800" height="76" alt="license-dark" src="https://github.com/user-attachments/assets/943b68d9-b24d-4c15-983e-a2c70746a932" />
 <br><br>
 
-This project is distributed under the **GNU General Public License v3.0**.
+This project is distributed under the **GPL General Public License v3.0**.
 
 See [LICENSE](LICENSE) for details.
