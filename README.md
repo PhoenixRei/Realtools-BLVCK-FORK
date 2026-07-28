@@ -41,6 +41,9 @@ The extension can display Genetic Potential alongside the other horse statistics
 
 Realtools presets allow horse information to be inserted into predefined text formats using placeholders.
 
+<img width="550" height="346" alt="legacy-presets-preview" src="https://github.com/user-attachments/assets/d667e30f-f94c-43c7-81dd-e5d2c875f4c6" />
+<br><br>
+
 BLVCK FORK supports presets for:
 
 - Name
@@ -49,6 +52,9 @@ BLVCK FORK supports presets for:
 - Public Notes
 
 Private Notes and Public Notes have been added to the preset system so that the same placeholder functionality can be used for more detailed breeding records and player-facing information.
+
+<img width="550" height="658" alt="notes-presets-preview" src="https://github.com/user-attachments/assets/55b94a5c-0eba-46f2-b71b-9b18cf5cae80" />
+<br><br>
 
 Presets can combine normal text with calculated or extracted horse information.
 
