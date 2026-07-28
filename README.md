@@ -271,6 +271,6 @@ The optional redesigned Passport and Owner's Notes interfaces were inspired by H
 <img width="1800" height="76" alt="license-dark" src="https://github.com/user-attachments/assets/943b68d9-b24d-4c15-983e-a2c70746a932" />
 <br><br>
 
-This project is distributed under the **GPL General Public License v3.0**.
+This project is distributed under the **GNU General Public License v3.0**.
 
 See [LICENSE](LICENSE) for details.
