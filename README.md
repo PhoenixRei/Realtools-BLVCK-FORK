@@ -167,7 +167,7 @@ I do not claim ownership of Horse Reality's design concept, nor do I intend to p
 
 The UI included in BLVCK FORK is an unofficial implementation created for the extension and was developed using Horse Reality's WIP preview as its primary visual inspiration.
 
-This project is not affiliated with or endorsed by the Horse Reality team.
+This project is not affiliated with the Horse Reality team.
 
 If Horse Reality requests changes to this implementation, I am willing to modify, redesign, or remove the affected UI.
 
