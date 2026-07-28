@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 600px; width: 460px;">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="popout-style.css"/>
+    <script src="browser-polyfill.js"></script>
+    <style>
+        .generators-title {
+            font-family: "Times New Roman", Times, serif;
+            text-align: center;
+        }
+
+        .generators-description {
+            margin-bottom: 3px;
+        }
+
+        .example-label {
+            margin-bottom: 0px;
+        }
+
+        .example-label + .generators-title {
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header class="popup-header">
+        <div class="popup-brand">
+            <img class="brand-logo" src="images/realtools-blvck-fork.png" alt="Realtools — Blvck Fork">
+        </div>
+    </header>
+
+    <nav class="popup-tabs" aria-label="Extension sections">
+        <button class="popup-tab active" data-panel="presets-panel">Presets</button>
+        <button class="popup-tab" data-panel="settings-panel">Settings</button>
+    </nav>
+
+    <main>
+        <section id="presets-panel" class="popup-panel settings-panel active">
+            <div class="panel-intro">
+                <span class="panel-kicker">Personalize</span>
+                <strong>Make Realtools fit your stable</strong>
+            </div>
+            <h3 class="generators-title">—————————ㅤPLACEHOLDERSㅤ—————————</h3>
+            <p class="helper-text generators-description realtools-hint">Use placeholder values (designated by curly brackets) to compose a name/tagline format for your horses.</p>
+            <a href="legend.html" target="_blank">🔗 Open legend</a>
+            <br/>
+            <br/>
+            <h3 class="generators-title">———————————ㅤPRESETSㅤ———————————</h3>
+            <h4>Name <select id="presets-select-name"></select> <button class="yellow" id="presets-select-name-new">New</button> <button class="yellow rename" id="presets-select-name-rename">Rename</button> <button class="yellow red" id="presets-select-name-del">Delete</button></h4>
+            <input type="text" id="settings-name-format" data-preset-title="default"/>
+            <p class="example-label" style="font-size:small">
+                <b>Example:</b> <span id="settings-name-format-preview"></span>
+            </p>
+
+            <h3 class="generators-title">—————————————————————————————</h3>
+            <h4>Tagline <select id="presets-select-tagline"></select> <button class="yellow" id="presets-select-tagline-new">New</button> <button class="yellow rename" id="presets-select-tagline-rename">Rename</button> <button class="yellow red" id="presets-select-tagline-del">Delete</button></h4>
+            <input type="text" id="settings-tagline-format" data-preset-title="default"/>
+            <p class="example-label" style="font-size:small">
+                <b>Example:</b> <span id="settings-tagline-format-preview"></span>
+            </p>
+
+            <h3 class="generators-title">—————————————————————————————</h3>
+            <h4>Private Notes <select id="presets-select-private-notes"></select> <button class="yellow" id="presets-select-private-notes-new">New</button> <button class="yellow rename" id="presets-select-private-notes-rename">Rename</button> <button class="yellow red" id="presets-select-private-notes-del">Delete</button></h4>
+            <textarea class="note-format-editor" id="settings-private-notes-format" data-preset-title="default" wrap="off"></textarea>
+            <p class="note-example"><b>Example:</b></p>
+            <pre class="example-label note-format-preview" id="settings-private-notes-format-preview"></pre>
+
+            <h3 class="generators-title">—————————————————————————————</h3>
+            <h4>Public Notes <select id="presets-select-public-notes"></select> <button class="yellow" id="presets-select-public-notes-new">New</button> <button class="yellow rename" id="presets-select-public-notes-rename">Rename</button> <button class="yellow red" id="presets-select-public-notes-del">Delete</button></h4>
+            <textarea class="note-format-editor" id="settings-public-notes-format" data-preset-title="default" wrap="off"></textarea>
+            <p class="note-example"><b>Example:</b></p>
+            <pre class="example-label note-format-preview" id="settings-public-notes-format-preview"></pre>
+
+            <p class="modal-footnote realtools-hint">For Name, Tagline and Notes, a matching preset preserves historical extremes: HS can only increase and LS can only decrease. Dependent values such as Breed Total, RNG and range are recalculated from them.</p>
+        </section>
+
+        <section id="settings-panel" class="popup-panel settings-panel">
+            <h3 class="generators-title">——————————ㅤ ADVANCED ㅤ——————————</h3>
+            <div class="settings-toggle-row">
+                <input type="checkbox" id="settings-show-hints" checked>
+                <label for="settings-show-hints">Show hints</label>
+            </div>
+            <div class="settings-toggle-row">
+                <input type="checkbox" id="settings-info-ui-tweaks" checked>
+                <label for="settings-info-ui-tweaks">Info UI Tweaks</label>
+            </div>
+        </section>
+    </main>
+    <script src="popout.js"></script>
+</body>
+</html>
