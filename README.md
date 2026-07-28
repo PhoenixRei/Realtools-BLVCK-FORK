@@ -267,4 +267,4 @@ Realtools: BLVCK FORK is an unofficial community project and is not affiliated w
 
 This project is distributed under the **GNU General Public License v3.0**.
 
-See `LICENSE` for details.
+See [LICENSE](LICENSE) for details.
