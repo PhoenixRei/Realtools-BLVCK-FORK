@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popout-style.css">
+  <style>
+    html, body {
+      background:
+        linear-gradient(rgba(100,110,92,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100,110,92,.045) 1px, transparent 1px),
+        #EBEBE8;
+      background-size: 22px 22px;
+      color: #46523C;
+      font-size: 15px;
+      line-height: 1.35;
+      margin: 0;
+      max-width: 100%;
+      min-height: 100%;
+      padding: 20px;
+      text-align: left;
+    }
+    #format-legend {
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(23,63,76,.15);
+      max-width: 40rem;
+      padding: 0;
+      margin-top: 12px;
+      margin-bottom: 30px;
+      background: #fff;
+      text-align: left;
+    }
+    .head {
+      margin: auto;
+      max-width: 40rem;
+      color: #646E5C;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 28px;
+      margin-top: 0;
+      padding: 0;
+      text-align: center;
+    }
+    #format-legend code {
+      background: #E4E4DF;
+      color: #46523C;
+      font-weight: 400;
+    }
+  
+    .center-title {
+      text-align: center;
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    #format-legend h3 {
+      color: #646E5C;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    #format-legend h4 {
+      color: #646E5C;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    #format-legend p {
+      color: #B2B2A1;
+    }
+
+  </style>
+</head>
+<body>
+  <h2 class="head center-title">PRESET FORMATTING LEGEND</h2>
+  <div id="format-legend">
+    <div style="padding: 20px 24px">
+      <p>Use these placeholders to create presets for your horse's names, taglines, private notes, and public notes. Go to Realtools: Blvck Fork settings and update the values in the required fields to autosave what you've written..</p>
+      <h3 class="center-title">——————ㅤCONFORMATIONㅤ——————</h3>
+      <h4>Overall Conformation</h4>
+      <ul>
+        <li><code>{vg}</code> Very Good</li>
+        <li><code>{gs}</code> Good+</li>
+        <li><code>{g}</code> Good</li>
+        <li><code>{ag}</code> All Goods (<code>g</code> + <code>gs</code>)</li>
+        <li><code>{a}</code> Average</li>
+        <li><code>{ba}</code> Below Average</li>
+        <li><code>{p}</code> Poor</li>
+      </ul>
+      <h4>Individual Stats</h4>
+      <ul>
+        <li><code>{wal}</code> Walk</li>
+        <li><code>{trt}</code> Trot</li>
+        <li><code>{can}</code> Canter</li>
+        <li><code>{gal}</code> Gallop</li>
+        <li><code>{pos}</code> Posture</li>
+        <li><code>{hea}</code> Head</li>
+        <li><code>{nck}</code> Neck</li>
+        <li><code>{bck}</code> Back</li>
+        <li><code>{sld}</code> Shoulders</li>
+        <li><code>{flg}</code> Frontlegs</li>
+        <li><code>{hdq}</code> Hindquarters</li>
+        <li><code>{sck}</code> Socks</li>
+      </ul>
+      <h4>Conformation Stats in Discipline Summaries</h4>
+      <ul>
+        <li><code>{dr_g}</code> Dressage</li>
+        <li><code>{dv_g}</code> Driving</li>
+        <li><code>{en_g}</code> Endurance</li>
+        <li><code>{ev_g}</code> Eventing</li>
+        <li><code>{rc_g}</code> Flat racing</li>
+        <li><code>{sj_g}</code> Show jumping</li>
+        <li><code>{re_g}</code> Western reining</li>
+      </ul>
+      <p>Use <code>g</code> for Good or replace it with <code>gs</code>, <code>ag</code>, or <code>vg</code> to use the values for Good+, All Goods (<code>g</code> + <code>gs</code>), or Very Good, respectively.</p>
+      <h4>Scores</h4>
+      <ul>
+        <li><code>{hs}</code> Highest visible result</li>
+        <li><code>{ls}</code> Lowest visible result</li>
+        <li><code>{rng}</code> RNG result (adds <code>6.062</code> to <code>ls</code> if the horse is an Icelandic, else <code>6.928</code>)</li>
+        <li><code>{range}</code> Exact difference between <code>hs</code> and <code>ls</code></li>
+      </ul>
+      <p>Append <code>_r0</code> through <code>_r2</code> to round a score's decimal places. e.g., <code>ls_r1</code> will round a score like 79.973 to 80.0.</p>
+      <p>When the existing Name, Tagline, Private Notes or Public Notes text matches the selected preset, Realtools preserves historical extremes before filling it again: HS can only increase and LS can only decrease. Breed Total, RNG and range placeholders are recalculated from the preserved scores.</p>
+    </div>
+  </div>
+  <div id="format-legend">
+    <div style="padding: 20px 24px">
+      <h3 class="center-title">—————ㅤGENETIC POTENTIALㅤ—————</h3>
+      <h4>Overall Genetic Potential</h4>
+      <ul>
+        <li><code>{gp}</code> Genetic Potential</li>
+        <li><code>{dr}</code> Dressage</li>
+        <li><code>{dv}</code> Driving</li>
+        <li><code>{en}</code> Endurance</li>
+        <li><code>{ev}</code> Eventing</li>
+        <li><code>{rc}</code> Flat Racing</li>
+        <li><code>{sj}</code> Show Jumping</li>
+        <li><code>{re}</code> Western Reining</li>
+      </ul>
+      <h4>Individual Stats</h4>
+      <ul>
+        <li><code>{acc}</code> Acceleration</li>
+        <li><code>{agi}</code> Agility</li>
+        <li><code>{bal}</code> Balance</li>
+        <li><code>{bas}</code> Bascule</li>
+        <li><code>{pul}</code> Pulling power</li>
+        <li><code>{spd}</code> Speed</li>
+        <li><code>{spr}</code> Sprint</li>
+        <li><code>{sta}</code> Stamina</li>
+        <li><code>{str}</code> Strength</li>
+        <li><code>{sft}</code> Surefootedness</li>
+      </ul>
+      <h4>Percentages</h4>
+      <ul>
+        <li><code>{drp}</code> Dressage %</li>
+        <li><code>{dvp}</code> Driving %</li>
+        <li><code>{enp}</code> Endurance %</li>
+        <li><code>{evp}</code> Eventing %</li>
+        <li><code>{rcp}</code> Flat Racing %</li>
+        <li><code>{sjp}</code> Show Jumping %</li>
+        <li><code>{rep}</code> Western Reining %</li>
+      </ul>
+      <p>Append <code>_r0</code> or <code>_r1</code> to round a percentage's decimal places. e.g., <code>drp_r1</code> will round a percentage like 64.25 to 64.3.</p>
+    </div>
+  </div>
+  <div id="format-legend">
+    <div style="padding: 20px 24px">
+      <h3 class="center-title">————————ㅤOTHERㅤ————————</h3>
+      <h4>Breed Total</h4>
+      <ul>
+        <li><code>{bt}</code> Breed Total (overall GP)</li>
+        <li><code>{dr_bt}</code> Breed Total (Dressage)</li>
+        <li><code>{dv_bt}</code> Breed Total (Driving)</li>
+        <li><code>{en_bt}</code> Breed Total (Endurance)</li>
+        <li><code>{ev_bt}</code> Breed Total (Eventing)</li>
+        <li><code>{rc_bt}</code> Breed Total (Flat Racing)</li>
+        <li><code>{sj_bt}</code> Breed Total (Show Jumping)</li>
+        <li><code>{re_bt}</code> Breed Total (Western Reining)</li>
+        <li><code>{dr_obt}</code> Overall Breed Total (Dressage)</li>
+        <li><code>{dv_obt}</code> Overall Breed Total (Driving)</li>
+        <li><code>{en_obt}</code> Overall Breed Total (Endurance)</li>
+        <li><code>{ev_obt}</code> Overall Breed Total (Eventing)</li>
+        <li><code>{rc_obt}</code> Overall Breed Total (Flat Racing)</li>
+        <li><code>{sj_obt}</code> Overall Breed Total (Show Jumping)</li>
+        <li><code>{re_obt}</code> Overall Breed Total (Western Reining)</li>
+      </ul>
+      <h4>Sex</h4>
+      <ul>
+        <li><code>{sex_l}</code> f, c, s, m, or g</li>
+        <li><code>{sex_u}</code> F, C, S, M, or G</li>
+        <li><code>{ln}</code> Lifenumber</li>
+      </ul>
+      <h4>Breed Total Formulas</h4>
+      <ul>
+        <li>Breed total: <code>((GP / 10) + HighestScore) / 2</code></li>
+        <li>Discipline breed total: <code>((DisciplineGP / NumberOfTraits) + HighestScore) / 2</code></li>
+        <li>Overall breed total: <code>((GP / 10) + HighestScore + (DisciplineGP / NumberOfTraits)) / 3</code></li>
+      </ul>
+      <p>Append <code>_r0</code> or <code>_r1</code> to round a total's decimal places. e.g., <code>dr_bt_r1</code> will round a score like 53.38 to 53.4.</p>
+    </div>
+  </div>
+</body>
+</html>
