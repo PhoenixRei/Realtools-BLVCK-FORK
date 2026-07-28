@@ -1,0 +1,72 @@
+{
+   "action": {
+      "default_icon": {
+         "16": "/images/16.png",
+         "32": "/images/32.png",
+         "48": "/images/48.png",
+         "128": "/images/128.png"
+      },
+      "default_popup": "popout.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [
+      {
+         "css": [
+            "site-hr/tab-layout.css"
+         ],
+         "js": [
+            "browser-polyfill.js",
+            "constants.js",
+            "site-hr/styles/base.js",
+            "site-hr/styles/colour.js",
+            "site-hr/styles/stats.js",
+            "site-hr/utils.js",
+            "site-hr/modules/profile-core.js",
+            "site-hr/modules/stats.js",
+            "site-hr/modules/colour.js",
+            "site-hr/modules/formatting.js",
+            "site-hr/modules/edit.js",
+            "site-hr/modules/tab-controller.js",
+            "site-hr/modules/passport.js",
+            "site-hr/calculator.js",
+            "site-hr/buttons.js",
+            "site-hr/layers.js",
+            "site-hr/v2.js"
+         ],
+         "matches": [
+            "https://*.horsereality.com/horses/*"
+         ]
+      },
+      {
+         "js": [
+            "browser-polyfill.js",
+            "constants.js"
+         ],
+         "matches": [
+            "https://realtools.shay.cat/*"
+         ]
+      }
+   ],
+   "description": "A community-maintained revival of Realtools for Horse Reality.",
+   "host_permissions": [
+      "https://www.horsereality.com/*",
+      "https://v2.horsereality.com/*",
+      "https://assets.horsereality.com/*",
+      "https://horse-img.horsereality.com/*",
+      "https://realtools.shay.cat/*"
+   ],
+   "icons": {
+      "16": "/images/16.png",
+      "32": "/images/32.png",
+      "48": "/images/48.png",
+      "128": "/images/128.png"
+   },
+   "manifest_version": 3,
+   "name": "Realtools: BLVCK FORK",
+   "permissions": [
+      "storage"
+   ],
+   "version": "0.1.0"
+}
