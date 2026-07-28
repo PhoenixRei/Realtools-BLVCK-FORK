@@ -1,0 +1,5 @@
+/* Layout adjustments for Horse Reality content blocks. */
+.container_12 .grid_12.stable_block,
+.container_12 .grid_6.half_block {
+    border-bottom-width: 1px !important;
+}
