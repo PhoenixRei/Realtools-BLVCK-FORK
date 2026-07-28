@@ -51,6 +51,8 @@ BLVCK FORK supports presets for:
 - Private Notes
 - Public Notes
 
+Presets can now also be **renamed directly**. There is no longer a need to create a new preset just to change its name — simply use the rename button on the existing preset.
+
 Private Notes and Public Notes have been added to the preset system so that the same placeholder functionality can be used for more detailed breeding records and player-facing information.
 
 <img width="550" height="658" alt="notes-presets-preview" src="https://github.com/user-attachments/assets/55b94a5c-0eba-46f2-b71b-9b18cf5cae80" />
