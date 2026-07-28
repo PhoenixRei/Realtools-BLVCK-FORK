@@ -14,6 +14,8 @@ Realtools: BLVCK FORK restores beloved features from the original extension, imp
 - The redesigned Info UI can be enabled or disabled in Settings at any time.
 - A more organic Passport layout, including owner, breeder, breed, age, sex, height, predicates, birthday, location, and life number.
 
+<img width="1200" height="305" alt="info-preview" src="https://github.com/user-attachments/assets/11867142-3b9a-4f84-8d4b-65ee1d474cf9" />
+
 ### Enhanced Stats Tab
 
 - A refreshed Stats tab design, with Genetic Potential displayed directly alongside the other horse statistics.
@@ -21,6 +23,10 @@ Realtools: BLVCK FORK restores beloved features from the original extension, imp
 - Discipline GP values and percentages.
 - Best and Worst results for Conformation Shows and Competitions.
 - Expandable result lists with improved table layouts.
+
+<img width="1200" height="839" alt="stats-preview" src="https://github.com/user-attachments/assets/5e9e2b65-6a3a-4395-ad8f-139df3a04b09" />
+
+<img width="1200" height="792" alt="achievements-preview" src="https://github.com/user-attachments/assets/bc120ac2-8c6b-454b-b280-b52af084b7a3" />
 
 ### Presets and Placeholders
 
