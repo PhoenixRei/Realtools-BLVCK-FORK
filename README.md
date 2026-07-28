@@ -39,8 +39,6 @@ Realtools: BLVCK FORK restores beloved features from the original extension, imp
 
 ## Installation
 
-### Chrome, Edge, and other Chromium-based browsers
-
 1. Download the latest ZIP file from the [Releases](../../releases) page.
 2. Extract the ZIP into a separate folder.
 3. Open `chrome://extensions` in your browser.
