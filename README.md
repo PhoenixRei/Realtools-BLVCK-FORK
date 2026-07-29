@@ -159,17 +159,17 @@ Disabling it restores the normal Horse Reality interface while allowing the othe
 <br><br>
 
 > [!IMPORTANT]
-> The optional Passport and Owner's Notes redesign in Realtools: BLVCK FORK was inspired by an **official Horse Reality video preview showing their work-in-progress horse profile UI**.
+> The redesigned **Stats tab**, **Passport**, and **Owner's Notes interfaces** included in Realtools: BLVCK FORK were inspired by an **official Horse Reality video preview showcasing their work-in-progress horse profile UI**.
 
 The original design concept and visual direction belong to **Horse Reality**.
 
-I do not claim ownership of Horse Reality's design concept, nor do I intend to present the redesigned interface included in this extension as an original Horse Reality feature or as my own original design concept.
+I do not claim ownership of Horse Reality's design concept, nor do I intend to present these redesigned interfaces as official Horse Reality features or as my own original design concept.
 
-The UI included in BLVCK FORK is an unofficial implementation created for the extension and was developed using Horse Reality's WIP preview as its primary visual inspiration.
+The interfaces included in BLVCK FORK are unofficial implementations created specifically for this extension, using Horse Reality's WIP horse profile preview as their primary source of visual inspiration.
 
 This project is not affiliated with the Horse Reality team.
 
-If Horse Reality requests changes to this implementation, I am willing to modify, redesign, or remove the affected UI.
+If Horse Reality requests changes to any of these interfaces, I am willing to modify, redesign, or remove the affected UI.
 
 <br>
 
