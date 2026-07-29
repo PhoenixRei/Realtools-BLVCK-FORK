@@ -262,9 +262,11 @@ BLVCK FORK focuses on restoring broken functionality and expanding the existing 
 
 ### Horse Reality
 
-Horse Reality, its game content, and its original interface and design concepts belong to their respective owners.
+Horse Reality, its game content, interface, and original design concepts belong to their respective owners.
 
-The optional redesigned Passport and Owner's Notes interfaces were inspired by Horse Reality's official WIP horse profile UI preview, as described in the **UI Design Credit & Disclaimer** section above.
+Parts of the redesigned horse profile included in Realtools: BLVCK FORK—specifically the **Stats**, **Passport**, and **Owner's Notes** interfaces—were inspired by Horse Reality's official preview of their work-in-progress horse profile redesign.
+
+Full credit for the original design direction belongs to the Horse Reality team. The implementation included in this extension is an unofficial adaptation created for the community.
 
 <br>
 
