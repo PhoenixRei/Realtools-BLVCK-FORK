@@ -31,31 +31,17 @@
             "site-hr/modules/tab-controller.js",
             "site-hr/modules/passport.js",
             "site-hr/calculator.js",
-            "site-hr/buttons.js",
-            "site-hr/layers.js",
-            "site-hr/v2.js"
+            "site-hr/layers.js"
          ],
          "matches": [
             "https://*.horsereality.com/horses/*"
-         ]
-      },
-      {
-         "js": [
-            "browser-polyfill.js",
-            "constants.js"
-         ],
-         "matches": [
-            "https://realtools.shay.cat/*"
          ]
       }
    ],
    "description": "A community-maintained revival of Realtools for Horse Reality.",
    "host_permissions": [
       "https://www.horsereality.com/*",
-      "https://v2.horsereality.com/*",
-      "https://assets.horsereality.com/*",
-      "https://horse-img.horsereality.com/*",
-      "https://realtools.shay.cat/*"
+      "https://v2.horsereality.com/*"
    ],
    "icons": {
       "16": "/images/16.png",
@@ -68,5 +54,5 @@
    "permissions": [
       "storage"
    ],
-   "version": "0.1.0"
+   "version": "1.0.0"
 }
