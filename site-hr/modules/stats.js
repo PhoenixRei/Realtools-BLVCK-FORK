@@ -538,7 +538,7 @@ function refreshDisciplineGpCard() {
         value.className = 'realtools-overview-value'
         value.textContent = percentage == null
             ? String(discipline.value)
-            : `${discipline.value} | ${percentage}`
+            : `${discipline.value} — ${percentage}`
 
         row.classList.add('realtools-progress-row')
         row.append(
