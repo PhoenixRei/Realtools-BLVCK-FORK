@@ -122,6 +122,27 @@ function makeStatsChevron(doc, direction = 'down') {
 function installStatsSubtabs(tab) {
     const buttons = [...tab.querySelectorAll('.realtools-stats-subtab')]
     const panels = [...tab.querySelectorAll('.realtools-stats-panel')]
+    const resultCards = [...tab.querySelectorAll('.realtools-results-card')]
+    let collapsedResultsHeight = 0
+
+    const equalizeCollapsedResults = () => {
+        if (!resultCards.length || resultCards.some((card) => card.offsetHeight === 0)) return
+
+        for (const card of resultCards) {
+            if (!card.classList.contains('realtools-results-card-expanded')) card.style.height = 'auto'
+        }
+        collapsedResultsHeight = Math.max(
+            collapsedResultsHeight,
+            ...resultCards
+                .filter((card) => !card.classList.contains('realtools-results-card-expanded'))
+                .map((card) => card.offsetHeight),
+        )
+        for (const card of resultCards) {
+            if (!card.classList.contains('realtools-results-card-expanded')) {
+                card.style.height = `${collapsedResultsHeight}px`
+            }
+        }
+    }
 
     const activatePanel = (panelName) => {
         for (const button of buttons) {
@@ -132,6 +153,10 @@ function installStatsSubtabs(tab) {
 
         for (const panel of panels) {
             panel.hidden = panel.dataset.panel !== panelName
+        }
+
+        if (panelName === 'achievements') {
+            requestAnimationFrame(equalizeCollapsedResults)
         }
     }
 
@@ -152,6 +177,10 @@ function installStatsSubtabs(tab) {
             }
 
             button.setAttribute('aria-expanded', String(nextExpanded))
+            card.classList.toggle('realtools-results-card-expanded', nextExpanded)
+            card.style.height = nextExpanded || !collapsedResultsHeight
+                ? 'auto'
+                : `${collapsedResultsHeight}px`
             const label = button.ownerDocument.createElement('span')
             label.textContent = nextExpanded
                 ? button.dataset.expandedLabel
@@ -509,7 +538,7 @@ function refreshDisciplineGpCard() {
         value.className = 'realtools-overview-value'
         value.textContent = percentage == null
             ? String(discipline.value)
-            : `${discipline.value} — ${percentage}`
+            : `${discipline.value} | ${percentage}`
 
         row.classList.add('realtools-progress-row')
         row.append(

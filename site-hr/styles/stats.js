@@ -341,7 +341,7 @@
 }
 
 .realtools-stats-achievements-panel {
-    align-items: stretch;
+    align-items: start;
     box-sizing: border-box;
     display: grid;
     gap: 16px;
@@ -453,7 +453,7 @@
 }
 
 .realtools-results-card {
-    align-self: stretch;
+    align-self: start;
     background: #fff !important;
     border: 1px solid #dfe6eb !important;
     border-radius: 10px;
@@ -462,7 +462,6 @@
     display: flex;
     float: none !important;
     flex-direction: column;
-    height: 100%;
     min-height: 390px;
     overflow: hidden;
     padding: 18px 18px 0;
@@ -918,9 +917,7 @@
     background: #e9f4fb;
 }
 
-.realtools-conformation-card .realtools-overview-value.realtools-quality-very-good,
-.realtools-conformation-card .realtools-overview-value.realtools-quality-good-plus,
-.realtools-conformation-card .realtools-overview-value.realtools-quality-good {
+.realtools-conformation-card .realtools-overview-value.realtools-quality-very-good {
     background: #eaf6ee;
 }
 
@@ -933,8 +930,9 @@
     background: #fff0ea;
 }
 
+.realtools-conformation-card .realtools-overview-value.realtools-quality-good-plus,
 .realtools-conformation-card .realtools-overview-value.realtools-quality-good {
-    background: #F1EFE3;
+    background: #EBF1E3;
 }
 
 .realtools-conformation-card .realtools-overview-row {
