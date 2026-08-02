@@ -1,5 +1,5 @@
 // Modern shadow-DOM profile cards: Pregnancy, Passport, Notes, and Pedigree.
-let realtoolsInfoUiTweaksEnabled = true
+let realtoolsInfoUiTweaksEnabled = false
 
 function realtoolsPassportText(value = '') {
     const decoder = document.createElement('textarea')

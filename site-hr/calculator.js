@@ -2,7 +2,7 @@
 async function startRealtoolsCalculator() {
     try {
         const stored = await browser.storage.sync.get('realtoolsSettings')
-        setInfoUiTweaksEnabled(stored.realtoolsSettings?.info_ui_tweaks !== false)
+        setInfoUiTweaksEnabled(stored.realtoolsSettings?.info_ui_tweaks === true)
     } catch {
         setInfoUiTweaksEnabled(true)
     }
