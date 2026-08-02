@@ -136,10 +136,9 @@ The updated Stats interface includes:
 
 The goal is to present information already available through Horse Reality in a more convenient format rather than changing the underlying game functionality.
 
-<img width="1200" height="1070" alt="overview-preview" src="https://github.com/user-attachments/assets/9fccbaa1-6798-46a7-9381-4c352dc4c850" />
+<img width="1200" height="1070" alt="overview-preview" src="https://github.com/user-attachments/assets/c6321fca-1570-42fe-bf2d-114714f92f3e" />
 <br><br>
-<img width="1200" height="978" alt="achievements-preview" src="https://github.com/user-attachments/assets/014bec5b-3136-422b-bb88-21ebd30b6461" />
-
+<img width="1200" height="978" alt="achievements-preview" src="https://github.com/user-attachments/assets/f7e2bbf8-a83c-4807-a3f0-6e7af78a03ef" />
 
 ---
 
