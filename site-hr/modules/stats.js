@@ -944,14 +944,31 @@ async function loadRealtoolsStatsTab() {
         titleGroup.appendChild(summary)
     }
 
+    const headingTotals = doc.createElement('div')
+    headingTotals.className = 'realtools-stats-heading-totals'
+
+    const breedTotalCard = doc.createElement('div')
+    breedTotalCard.className = 'realtools-stats-total-card realtools-stats-breed-total'
+    const breedTotalLabel = doc.createElement('span')
+    breedTotalLabel.textContent = 'Breed Total'
+    const breedTotalValue = doc.createElement('strong')
+    const hasBreedTotalInputs = String(gpTotal || '').trim() !== ''
+        && highestScore !== ''
+        && Number.isFinite(Number(highestScore))
+    breedTotalValue.textContent = hasBreedTotalInputs
+        ? (((readNumericStat(gpTotal) / 10) + Number(highestScore)) / 2).toFixed(3)
+        : '—'
+    breedTotalCard.append(breedTotalLabel, breedTotalValue)
+
     const gpTotalCard = doc.createElement('div')
-    gpTotalCard.className = 'realtools-stats-gp-total'
+    gpTotalCard.className = 'realtools-stats-total-card realtools-stats-gp-total'
     const gpTotalLabel = doc.createElement('span')
     gpTotalLabel.textContent = 'GP total'
     const gpTotalValue = doc.createElement('strong')
     gpTotalValue.textContent = gpTotal || '—'
     gpTotalCard.append(gpTotalLabel, gpTotalValue)
-    statsHeading.append(titleGroup, gpTotalCard)
+    headingTotals.append(breedTotalCard, gpTotalCard)
+    statsHeading.append(titleGroup, headingTotals)
 
     const statsNavigation = doc.createElement('div')
     statsNavigation.className = 'realtools-stats-subtabs-navigation'

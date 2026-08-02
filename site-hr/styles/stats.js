@@ -719,7 +719,15 @@
     white-space: nowrap;
 }
 
-.realtools-stats-gp-total {
+.realtools-stats-heading-totals {
+    display: flex;
+    gap: 12px;
+    position: absolute;
+    right: 12px;
+    top: 0;
+}
+
+.realtools-stats-total-card {
     align-items: center;
     background: #fff;
     border: 1px solid #dfe6eb;
@@ -731,18 +739,15 @@
     min-height: 70px;
     min-width: 128px;
     padding: 10px 22px;
-    position: absolute;
-    right: 12px;
-    top: 0;
 }
 
-.realtools-stats-gp-total span {
+.realtools-stats-total-card span {
     color: #43505f;
     font-size: 13px;
     line-height: 1.2;
 }
 
-.realtools-stats-gp-total strong {
+.realtools-stats-total-card strong {
     color: #17202c;
     font-size: 27px;
     font-weight: 700;
@@ -917,7 +922,7 @@
     background: #e9f4fb;
 }
 
-.realtools-conformation-card .realtools-overview-value.realtools-quality-very-good {
+.realtools-conformation-card .realtools-overview-value.realtools-quality-very-good, {
     background: #eaf6ee;
 }
 
@@ -1136,6 +1141,7 @@
 @media (max-width: 520px) {
     .realtools-stats-heading {
         align-items: flex-start;
+        flex-direction: column;
         gap: 14px;
         min-height: 0;
         padding-bottom: 8px;
@@ -1147,11 +1153,18 @@
         font-size: 25px;
     }
 
-    .realtools-stats-gp-total {
-        min-width: 100px;
+    .realtools-stats-heading-totals {
+        align-self: stretch;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        position: static;
+        width: 100%;
+    }
+
+    .realtools-stats-total-card {
+        min-width: 0;
         padding-left: 14px;
         padding-right: 14px;
-        position: static;
     }
 
     .realtools-progress-row {

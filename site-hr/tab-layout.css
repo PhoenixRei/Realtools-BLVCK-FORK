@@ -3,3 +3,16 @@
 .container_12 .grid_6.half_block {
     border-bottom-width: 1px !important;
 }
+
+.horse_blockimg {
+    border-radius: 8px !important;
+    width: 72px !important;
+    height: 72px !important;
+    background-color: #F0F2F4 !important;
+}
+
+.horse_blockimg img {
+    border-radius: 6px !important;
+    width: 72px !important;
+    height: 72px !important;
+}
