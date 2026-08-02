@@ -16,7 +16,7 @@ const nameFormatPreview = document.querySelector('#settings-name-format-preview'
 const taglineFormat = document.querySelector('#settings-tagline-format');
 const taglineFormatPreview = document.querySelector('#settings-tagline-format-preview');
 const NOTE_FORMATS_KEY = 'realtoolsNoteFormatsV1';
-const DEFAULT_PRIVATE_NOTES_FORMAT = 'Best Score: {hs}     「 RNG Best: {rng} 」\nWorst Score: {ls}\n————————————————————————\nFinal range: {range}';
+const DEFAULT_PRIVATE_NOTES_FORMAT = '';
 const showHintsCheck = document.querySelector('#settings-show-hints');
 const infoUiTweaksCheck = document.querySelector('#settings-info-ui-tweaks');
 
@@ -458,14 +458,14 @@ async function init() {
     if (typeof storage.info_ui_tweaks != 'undefined') {
         infoUiTweaksCheck.checked = Boolean(storage.info_ui_tweaks)
     } else {
-        infoUiTweaksCheck.checked = true
-        storage.info_ui_tweaks = true
+        infoUiTweaksCheck.checked = false
+        storage.info_ui_tweaks = false
     }
     applyHintVisibility(showHintsCheck.checked)
 
     // Formatting
-    storage.nameFormats = storage.nameFormats || {Default: '{ln}'}
-    storage.taglineFormats = storage.taglineFormats || {Default: '{vg}VG {gs}G+ {g}G {a}A {ba}BA {p}P'}
+    storage.nameFormats = storage.nameFormats || {default: '{ln}'}
+    storage.taglineFormats = storage.taglineFormats || {default: '{vg}VG {gs}G+ {g}G {a}A {ba}BA {p}P'}
     storage.activeNamePreset = Object.prototype.hasOwnProperty.call(storage.nameFormats, storage.activeNamePreset)
         ? storage.activeNamePreset : Object.keys(storage.nameFormats)[0]
     storage.activeTaglinePreset = Object.prototype.hasOwnProperty.call(storage.taglineFormats, storage.activeTaglinePreset)
