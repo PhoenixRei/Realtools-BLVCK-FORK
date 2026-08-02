@@ -1,6 +1,112 @@
 // Stats tab only: subtabs, overview cards, Health, Equipment, and Achievements.
 const COLLAPSED_RESULTS_LIMIT = 7
 
+const DISCIPLINE_GP_MAXIMUMS = Object.freeze({
+    dressage: 300,
+    driving: 500,
+    endurance: 400,
+    eventing: 500,
+    flat_racing: 400,
+    show_jumping: 500,
+    western_reining: 400,
+})
+
+function makeStatsSectionIcon(doc, type, className = 'realtools-stats-section-icon') {
+    const icon = doc.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    icon.setAttribute('viewBox', '0 0 24 24')
+    icon.setAttribute('aria-hidden', 'true')
+    icon.setAttribute('class', className)
+
+    const paths = {
+        conformation: [
+            'M4 19h4v-4H4v4Zm6 0h4v-8h-4v8Zm6 0h4V7h-4v12Z',
+            'm5 11 4-4 3 2 6-6',
+        ],
+        genetic: [
+            'M7 3c7 4 3 14 10 18M17 3C10 7 14 17 7 21',
+            'M9 7h6M8 12h8M9 17h6',
+        ],
+        discipline: [
+            'M8 4h8v3c0 3-1.8 5-4 5S8 10 8 7V4Z',
+            'M8 6H5v1c0 2 1 3 3 3M16 6h3v1c0 2-1 3-3 3M12 12v4M8 20h8M9 16h6v4',
+        ],
+        health: [
+            'M20 5.8C17.8 3.5 14 4.2 12 7 10 4.2 6.2 3.5 4 5.8c-2.5 2.6-1.1 7 8 13.2 9.1-6.2 10.5-10.6 8-13.2Z',
+            'M7 12h3l1.2-2.5L13 15l1.2-3H17',
+        ],
+        equipment: [
+            'M5 20v-7l3-6 5 2 4-3 2 2-3 5v7M8 13h8M8 20v2M16 20v2',
+            'M8 7 6 4M13 9l-1 4',
+        ],
+        healthRow: [
+            'M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z',
+        ],
+        medal: [
+            'M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z',
+            'm9 14-1 7 4-2 4 2-1-7',
+        ],
+        trophy: [
+            'M8 4h8v3c0 3-1.8 5-4 5S8 10 8 7V4Z',
+            'M8 6H5v1c0 2 1 3 3 3M16 6h3v1c0 2-1 3-3 3M12 12v4M8 20h8M9 16h6v4',
+        ],
+        horseshoe: [
+            'M7 4v7a5 5 0 0 0 10 0V4M7 7H4v4a8 8 0 0 0 16 0V7h-3',
+            'M5 4h4M15 4h4',
+        ],
+    }
+
+    for (const [index, pathData] of (paths[type] || paths.healthRow).entries()) {
+        const path = doc.createElementNS('http://www.w3.org/2000/svg', 'path')
+        path.setAttribute('d', pathData)
+        if (type === 'conformation' && index === 0) path.setAttribute('fill', 'currentColor')
+        icon.appendChild(path)
+    }
+    return icon
+}
+
+function readNumericStat(value) {
+    const match = String(value ?? '').replace(',', '.').match(/-?\d+(?:\.\d+)?/)
+    return match ? Number(match[0]) : 0
+}
+
+function createStatsProgressBar(doc, value, maximum) {
+    const safeMaximum = Math.max(1, Number(maximum) || 1)
+    const safeValue = Math.max(0, readNumericStat(value))
+    const percentage = Math.min(100, (safeValue / safeMaximum) * 100)
+    const track = doc.createElement('span')
+    track.className = 'realtools-stat-progress'
+    track.setAttribute('role', 'progressbar')
+    track.setAttribute('aria-valuemin', '0')
+    track.setAttribute('aria-valuemax', String(safeMaximum))
+    track.setAttribute('aria-valuenow', String(safeValue))
+
+    const fill = doc.createElement('span')
+    fill.className = 'realtools-stat-progress-fill'
+    fill.style.width = `${percentage}%`
+    track.appendChild(fill)
+    return track
+}
+
+function addStatsQualityClass(element, value) {
+    const quality = String(value || '').replace(/\s+/g, ' ').trim().toLowerCase()
+    const className = quality.includes('excellent')
+        ? 'excellent'
+        : quality.includes('very good')
+            ? 'very-good'
+            : quality.includes('good+') || quality.includes('good plus')
+                ? 'good-plus'
+                : quality.startsWith('good')
+            ? 'good'
+            : quality === 'average' || quality === 'moderate'
+                ? 'average'
+                : quality.includes('below average') || quality === 'fair' || quality === 'weak'
+                    ? 'below-average'
+                    : quality === 'poor' || quality === 'deficient'
+                        ? 'poor'
+                        : ''
+    if (className) element.classList.add(`realtools-quality-${className}`)
+}
+
 function makeStatsChevron(doc, direction = 'down') {
     const icon = doc.createElementNS('http://www.w3.org/2000/svg', 'svg')
     icon.setAttribute('viewBox', '0 0 24 24')
@@ -46,7 +152,11 @@ function installStatsSubtabs(tab) {
             }
 
             button.setAttribute('aria-expanded', String(nextExpanded))
-            button.replaceChildren(makeStatsChevron(button.ownerDocument, nextExpanded ? 'up' : 'down'))
+            const label = button.ownerDocument.createElement('span')
+            label.textContent = nextExpanded
+                ? button.dataset.expandedLabel
+                : button.dataset.collapsedLabel
+            button.replaceChildren(label, makeStatsChevron(button.ownerDocument, nextExpanded ? 'up' : 'down'))
             button.setAttribute('aria-label', nextExpanded ? 'Show fewer results' : 'Show all results')
         }
     }
@@ -56,6 +166,9 @@ function styleStatsResultsBlock(doc, block, title, best, worst) {
     if (!block) return
 
     block.classList.add('realtools-results-card')
+    block.classList.add(title === 'Competitions'
+        ? 'realtools-competitions-results-card'
+        : 'realtools-conformation-results-card')
     const header = block.children[0]
     if (header) {
         header.className = 'realtools-results-header'
@@ -63,7 +176,9 @@ function styleStatsResultsBlock(doc, block, title, best, worst) {
 
         const heading = doc.createElement('span')
         heading.className = 'realtools-results-title'
-        heading.textContent = title
+        const headingText = doc.createElement('span')
+        headingText.textContent = title
+        heading.appendChild(headingText)
 
         const badges = doc.createElement('span')
         badges.className = 'realtools-results-badges'
@@ -71,7 +186,7 @@ function styleStatsResultsBlock(doc, block, title, best, worst) {
         const addBadge = (label, value) => {
             if (value === '') return
             const badge = doc.createElement('span')
-            badge.className = 'realtools-results-badge'
+            badge.className = `realtools-results-badge realtools-results-badge-${label.toLowerCase()}`
             const badgeLabel = doc.createElement('span')
             badgeLabel.textContent = `${label}: `
             const badgeValue = doc.createElement('strong')
@@ -108,7 +223,10 @@ function styleStatsResultsBlock(doc, block, title, best, worst) {
         if (emptyMessage) {
             const message = emptyMessage.textContent.replace(/\s+/g, ' ').trim()
             emptyMessage.className = 'realtools-results-empty-message'
-            emptyMessage.replaceChildren(message)
+            const icon = makeStatsSectionIcon(doc, 'horseshoe', 'realtools-results-empty-icon')
+            const label = doc.createElement('span')
+            label.textContent = message
+            emptyMessage.replaceChildren(icon, label)
         }
     }
 
@@ -118,7 +236,11 @@ function styleStatsResultsBlock(doc, block, title, best, worst) {
         const button = doc.createElement('button')
         button.type = 'button'
         button.className = 'realtools-results-toggle'
-        button.appendChild(makeStatsChevron(doc))
+        button.dataset.collapsedLabel = title === 'Competitions' ? 'View all competitions' : 'View all shows'
+        button.dataset.expandedLabel = title === 'Competitions' ? 'Show fewer competitions' : 'Show fewer shows'
+        const label = doc.createElement('span')
+        label.textContent = button.dataset.collapsedLabel
+        button.append(label, makeStatsChevron(doc))
         button.setAttribute('aria-expanded', 'false')
         button.setAttribute('aria-label', 'Show all results')
         footer.appendChild(button)
@@ -176,7 +298,10 @@ function splitAchievementsBox(doc, achievementsBox) {
         const header = doc.createElement('div')
         header.className = 'realtools-achievements-card-header'
         const heading = doc.createElement('span')
-        heading.textContent = category.title
+        heading.className = 'realtools-achievements-card-title'
+        const headingText = doc.createElement('span')
+        headingText.textContent = category.title
+        heading.appendChild(headingText)
         header.appendChild(heading)
 
         const entries = doc.createElement('div')
@@ -269,6 +394,8 @@ function createStatsOverviewCard(doc, {
     className = '',
     notePattern = null,
     rows = null,
+    icon = '',
+    maximum = null,
 }) {
     if (!source) return null
 
@@ -280,7 +407,10 @@ function createStatsOverviewCard(doc, {
 
     const heading = doc.createElement('span')
     heading.className = 'realtools-overview-card-title'
-    heading.textContent = title
+    if (icon) heading.appendChild(makeStatsSectionIcon(doc, icon))
+    const headingText = doc.createElement('span')
+    headingText.textContent = title
+    heading.appendChild(headingText)
 
     const info = doc.createElement('span')
     info.className = 'realtools-overview-card-info'
@@ -311,7 +441,22 @@ function createStatsOverviewCard(doc, {
         rowValue.className = 'realtools-overview-value'
         rowValue.innerHTML = overviewRow.valueHtml
 
+        if (className.includes('realtools-conformation-card')) {
+            addStatsQualityClass(rowValue, overviewRow.valueText || rowValue.textContent)
+        }
+
         row.append(rowLabel, rowValue)
+        if (maximum != null) {
+            row.classList.add('realtools-progress-row')
+            const rowMaximum = typeof maximum === 'function'
+                ? maximum(overviewRow)
+                : maximum
+            row.appendChild(createStatsProgressBar(
+                doc,
+                overviewRow.valueText || rowValue.textContent,
+                rowMaximum
+            ))
+        }
         body.appendChild(row)
     }
 
@@ -364,9 +509,14 @@ function refreshDisciplineGpCard() {
         value.className = 'realtools-overview-value'
         value.textContent = percentage == null
             ? String(discipline.value)
-            : `${discipline.value} | ${percentage}`
+            : `${discipline.value} — ${percentage}`
 
-        row.append(label, value)
+        row.classList.add('realtools-progress-row')
+        row.append(
+            label,
+            value,
+            createStatsProgressBar(document, discipline.value, DISCIPLINE_GP_MAXIMUMS[disciplineKeys[index]])
+        )
         body.appendChild(row)
     })
 
@@ -534,12 +684,12 @@ async function loadRealtoolsStatsTab() {
 
     let conformationSummary = '';
     const veryGoodTotal = qualityResults.very_good_minus + qualityResults.very_good + qualityResults.very_good_plus
-    if (veryGoodTotal) conformationSummary += `<span style="color:#218C5B">${veryGoodTotal}VG</span> `;
-    if (qualityResults.good_plus) conformationSummary += `<span style="color:#5B8F2F">${qualityResults.good_plus}G+</span> `;
-    if (qualityResults.good) conformationSummary += `<span style="color:#85770F">${qualityResults.good}G</span> `;
-    if (qualityResults.average) conformationSummary += `<span style="color:#B57900">${qualityResults.average}A</span> `;
-    if (qualityResults.below_average) conformationSummary += `<span style="color:#C45F2E">${qualityResults.below_average}BA</span> `;
-    if (qualityResults.poor) conformationSummary += `<span style="color:#C43C35">${qualityResults.poor}P</span>`;
+    if (veryGoodTotal) conformationSummary += `<span style="color:#16865B">${veryGoodTotal}VG</span> `;
+    if (qualityResults.good_plus) conformationSummary += `<span style="color:#5D8F00">${qualityResults.good_plus}G+</span> `;
+    if (qualityResults.good) conformationSummary += `<span style="color:#9C8B12">${qualityResults.good}G</span> `;
+    if (qualityResults.average) conformationSummary += `<span style="color:#D79200">${qualityResults.average}A</span> `;
+    if (qualityResults.below_average) conformationSummary += `<span style="color:#CF4A13">${qualityResults.below_average}BA</span> `;
+    if (qualityResults.poor) conformationSummary += `<span style="color:#AD2821">${qualityResults.poor}P</span>`;
 
     conformationBox.children[0].innerHTML = `Conformation - ${conformationSummary}`
 
@@ -548,16 +698,16 @@ async function loadRealtoolsStatsTab() {
 
     const healthLabels = {
         excellent: ['E', '#218C5B'],
-        'very good': ['VG', '#218C5B'],
-        good: ['G', '#5B8F2F'],
-        average: ['A', '#B57900'],
-        fair: ['F', '#C45F2E'],
-        'below average': ['BA', '#C45F2E'],
-        poor: ['P', '#C43C35'],
-        strong: ['S', '#397C35'],
-        moderate: ['M', '#B57900'],
-        weak: ['W', '#C45F2E'],
-        deficient: ['D', '#C43C35'],
+        'very good': ['VG', '#16865B'],
+        good: ['G', '#5D8F00'],
+        average: ['A', '#D79200'],
+        fair: ['F', '#CF4A13'],
+        'below average': ['BA', '#CF4A13'],
+        poor: ['P', '#AD2821'],
+        strong: ['S', '#16865B'],
+        moderate: ['M', '#D79200'],
+        weak: ['W', '#CF4A13'],
+        deficient: ['D', '#AD2821'],
     }
     const healthRawText = healthBox?.textContent?.replace(/\s+/g, ' ').trim() || ''
     const healthRatings = healthRawText.match(
@@ -613,15 +763,14 @@ async function loadRealtoolsStatsTab() {
     const conformationCard = createStatsOverviewCard(doc, {
         title: 'Conformation',
         source: conformationBox,
-        summaryHtml: conformationSummary,
         className: 'realtools-conformation-card',
     })
     conformationCard?.querySelector('.realtools-overview-card-info')?.remove()
     const gpCard = createStatsOverviewCard(doc, {
         title: 'Genetic Potential',
         source: gpSource,
-        summaryHtml: gpTotal ? `GP total: <strong>${gpTotal}</strong>` : '',
         className: 'realtools-gp-card',
+        maximum: 100,
     })
     gpCard?.querySelector('.realtools-overview-card-info')?.remove()
     const disciplineKeys = [
@@ -637,7 +786,9 @@ async function loadRealtoolsStatsTab() {
         const percentage = confScores[disciplineKeys[index]]?.percentage
         return {
             label: discipline.trait,
-            valueHtml: percentage == null ? String(discipline.value) : `${discipline.value} (${percentage}%)`,
+            valueHtml: percentage == null ? String(discipline.value) : `${discipline.value} | ${percentage}`,
+            valueText: String(discipline.value),
+            maximum: DISCIPLINE_GP_MAXIMUMS[disciplineKeys[index]],
         }
     })
     const disciplineGpCard = createStatsOverviewCard(doc, {
@@ -645,6 +796,7 @@ async function loadRealtoolsStatsTab() {
         source: gpSource || conformationBox,
         className: 'realtools-discipline-gp-card',
         rows: disciplineGpRows,
+        maximum: (row) => row.maximum,
     })
     disciplineGpCard?.querySelector('.realtools-overview-card-info')?.remove()
     let healthCard = null
@@ -662,7 +814,6 @@ async function loadRealtoolsStatsTab() {
         const healthHeaderShell = createStatsOverviewCard(doc, {
             title: 'Health',
             source: healthBox,
-            summaryHtml: healthSummary,
             rows: [],
         })
         const newHealthHeader = healthHeaderShell.querySelector('.realtools-overview-card-header')
@@ -683,8 +834,9 @@ async function loadRealtoolsStatsTab() {
                 const value = doc.createElement('strong')
                 value.className = 'realtools-health-value'
                 value.textContent = healthRow.value
+                addStatsQualityClass(value, healthRow.value)
 
-                row.append(label, value)
+                row.append(makeStatsSectionIcon(doc, 'healthRow', 'realtools-health-row-icon'), label, value)
                 healthBody.appendChild(row)
             })
 
@@ -747,6 +899,31 @@ async function loadRealtoolsStatsTab() {
     const statsContainer = doc.createElement('div')
     statsContainer.className = 'realtools-stats-subtabs'
 
+    const statsHeading = doc.createElement('div')
+    statsHeading.className = 'realtools-stats-heading'
+
+    const titleGroup = doc.createElement('div')
+    titleGroup.className = 'realtools-stats-title-group'
+    const statsTitle = doc.createElement('h2')
+    statsTitle.className = 'realtools-stats-title'
+    statsTitle.textContent = 'Statistics'
+    titleGroup.appendChild(statsTitle)
+    if (conformationSummary) {
+        const summary = doc.createElement('span')
+        summary.className = 'realtools-stats-conformation-summary'
+        summary.innerHTML = conformationSummary
+        titleGroup.appendChild(summary)
+    }
+
+    const gpTotalCard = doc.createElement('div')
+    gpTotalCard.className = 'realtools-stats-gp-total'
+    const gpTotalLabel = doc.createElement('span')
+    gpTotalLabel.textContent = 'GP total'
+    const gpTotalValue = doc.createElement('strong')
+    gpTotalValue.textContent = gpTotal || '—'
+    gpTotalCard.append(gpTotalLabel, gpTotalValue)
+    statsHeading.append(titleGroup, gpTotalCard)
+
     const statsNavigation = doc.createElement('div')
     statsNavigation.className = 'realtools-stats-subtabs-navigation'
     statsNavigation.setAttribute('role', 'tablist')
@@ -755,7 +932,7 @@ async function loadRealtoolsStatsTab() {
     conformationButton.type = 'button'
     conformationButton.className = 'realtools-stats-subtab active'
     conformationButton.dataset.panel = 'conformation'
-    conformationButton.textContent = 'Statistics'
+    conformationButton.textContent = 'Overview'
     conformationButton.setAttribute('role', 'tab')
     conformationButton.setAttribute('aria-selected', 'true')
 
@@ -793,7 +970,7 @@ async function loadRealtoolsStatsTab() {
     if (achievementsCards) achievementsPanel.appendChild(achievementsCards)
     if (achievementsCards !== achievementsBox) achievementsBox?.remove()
 
-    statsContainer.append(statsNavigation, conformationPanel, achievementsPanel)
+    statsContainer.append(statsHeading, statsNavigation, conformationPanel, achievementsPanel)
     statsContent.prepend(statsContainer)
 
     statsContainer.dataset.realtoolsStatsRendered = 'true'
