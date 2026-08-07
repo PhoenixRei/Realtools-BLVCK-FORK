@@ -1,0 +1,95 @@
+# Privacy Policy — Realtools: BLVCK FORK
+
+**Last updated: August 7, 2026**
+
+Realtools: BLVCK FORK is an unofficial browser extension for Horse Reality.
+
+This policy explains what information the extension processes and how it is used.
+
+## Data Processing
+
+Realtools processes information available on Horse Reality pages only when necessary to provide its features.
+
+This may include game-related information such as:
+
+- horse names, IDs, profiles, and images;
+- horse statistics and competition results;
+- breeding, covering, pregnancy, and foaling information;
+- other Horse Reality content required by Realtools features.
+
+This information is used only to provide the extension's functionality.
+
+Realtools does **not** send Horse Reality page content or player-managed records to the developer.
+
+## Local Storage and Browser Sync
+
+Realtools uses browser storage to save information required by its features, including:
+
+- extension settings;
+- user-created presets;
+- Foaling Tracker records.
+
+Some settings or presets may use the browser's synchronization storage where supported.
+
+Browser synchronization is provided by the user's browser provider. Realtools does not operate its own synchronization server and does not receive this synchronized data.
+
+## Foaling Tracker
+
+The Foaling Tracker stores player-managed breeding records, such as mare and stallion information, covering dates and times, due dates, and foaling-related information.
+
+These records are stored in browser storage and are not sent to the developer.
+
+The tracker does not continuously collect or update information in the background. Players remain responsible for maintaining their saved records.
+
+## Communication with Horse Reality
+
+Some features communicate directly with Horse Reality services to retrieve information required for Realtools functionality.
+
+These requests may use the player's existing authenticated Horse Reality session. Where required by Horse Reality, session-related values such as a CSRF token may be used to complete authorized requests.
+
+Realtools does not collect or send the player's password or authentication information to the developer or to developer-controlled servers.
+
+## Data Sharing
+
+Realtools does not:
+
+- sell user data;
+- use user data for advertising or profiling;
+- use user data for creditworthiness or lending purposes;
+- send user data to the developer for unrelated purposes;
+- collect general browsing or search history;
+- access unrelated websites.
+
+Realtools does not operate a developer-controlled server for collecting user data.
+
+## Permissions
+
+The `storage` permission is used to save settings, presets, and player-managed Realtools data.
+
+Access to Horse Reality domains is required for Realtools to operate on Horse Reality pages and communicate with Horse Reality services when necessary.
+
+Realtools does not download and execute remote JavaScript or WebAssembly. Executable extension code is packaged with the extension.
+
+## Third-Party Services
+
+Realtools may load font resources from Google Fonts for the extension's user interface. When these resources are loaded, the user's browser may connect directly to Google services. Realtools does not send Horse Reality page content, Foaling Tracker records, presets, or other extension data to Google Fonts.
+
+Google may process technical information associated with these requests according to its own privacy policies.
+
+Realtools also communicates directly with Horse Reality services when required for extension functionality. Browser synchronization services may be used for certain settings and presets where supported.
+
+Horse Reality, Google, and browser synchronization providers have their own privacy policies and data practices. This Privacy Policy applies only to Realtools: BLVCK FORK.
+
+Realtools: BLVCK FORK is an unofficial community project and is not affiliated with or endorsed by Horse Reality.
+
+## Changes
+
+This Privacy Policy may be updated when Realtools functionality or its data practices change. The latest version will always be available in this repository.
+
+## Contact
+
+For questions about this Privacy Policy, please open an issue in the project repository:
+
+https://github.com/PhoenixRei/Realtools-BLVCK-FORK/issues
+
+Please do not include passwords, cookies, authentication tokens, or other sensitive account information in GitHub issues.
